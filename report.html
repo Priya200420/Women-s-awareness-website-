@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report | Take a Stand</title>
+  <style>
+    body {
+      background: linear-gradient(to top left, beige, rgb(219, 219, 219));
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .header {
+      padding: 20px;
+    }
+
+    .quote__description {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    .top-bar__bg {
+      background-color: rgb(234, 91, 91);
+      padding: 15px 0;
+    }
+
+    .top-bar__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .top-bar__logo {
+      height: 60px;
+      width: auto;
+      margin-bottom: 10px;
+    }
+
+    .nav {
+      margin-top: 10px;
+    }
+
+    .nav__link {
+      text-decoration: none;
+      color: white;
+      margin: 0 10px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav__link:hover {
+      color: black;
+    }
+
+    .body-matter {
+      padding: 30px;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .text-para {
+      margin-bottom: 40px;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    textarea {
+      width: 90%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    input[type="submit"] {
+      background-color: rgb(234, 91, 91);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    input[type="submit"]:hover {
+      background-color: rgb(200, 60, 60);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="quote">
+      <p class="quote__description">
+        "Reporting violence is the first step toward justice and safety."
+        <br />
+        <span style="text-align: center; display: block">~ Take a Stand Team</span>
+      </p>
+    </div>
+  </header>
+
+  <div class="top-bar top-bar__bg">
+    <div class="top-bar__content">
+      <img class="top-bar__logo" src="main_logo.jpg" alt="Website Logo" />
+      <h1 style="color: white; font-size: 2.2em">Take a Stand</h1>
+      <nav class="nav">
+        <a class="nav__link" href="Home.html">Home</a>
+        <a class="nav__link" href="report.html">Report</a>
+        <a class="nav__link" href="psy.html">psychiatrist-details</a>
+
+        <a class="nav__link" href="fakecall.html">Fake call</a>
+        <a class="nav__link" href="chat.html">Chat</a>
+        <a class="nav__link" href="SDTrick.html">Self-Defense</a>
+        <a class="nav__link" href="Importance.html">Importance</a>
+        <a class="nav__link" href="quiz.html">Quizzee</a>
+        <a class="nav__link" href="About.html">About</a>
+        <a class="nav__link" href="StartPage.html">Log Out</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="body-matter">
+    <section class="text-para">
+      <h1>Report an Incident</h1>
+      <p>
+        If you have experienced or witnessed violence, harassment, or any situation that threatens a woman's safety,
+        please use the form below to report it. All reports are treated with confidentiality and seriousness.
+      </p>
+    </section>
+
+    <section class="text-para">
+      <form onsubmit="return showAlert()">
+        <label for="name">Your Name:</label><br />
+        <input type="text" id="name" name="name" required /><br />
+
+        <label for="location">Location of Incident:</label><br />
+        <input type="text" id="location" name="location" required /><br />
+
+        <label for="description">Description of Incident:</label><br />
+        <textarea id="description" name="description" rows="5" required></textarea><br />
+
+        <label for="contact">Contact Info (Optional):</label><br />
+        <input type="text" id="contact" name="contact" /><br />
+
+        <input type="submit" value="Submit Report" />
+      </form>
+    </section>
+  </main>
+
+  <script>
+    function showAlert() {
+      alert("Report submitted successfully!");
+      return false; // prevent actual submission (for now)
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Live Location via WhatsApp</title>
+    <link rel="stylesheet" href="Imp.css">
+</head>
+
+<body>
+    <h2>Send Your Live Location for Tracking via WhatsApp</h2>
+    <button onclick="startTracking()">Start Tracking</button>
+    <button onclick="stopTracking()" style="display: none;">Stop Tracking</button>
+    <p id="status"></p>
+
+    <script>
+        let watchID;
+        let retryCount = 0;
+        const maxRetries = 3;
+
+        // Function to start tracking location
+        function startTracking() {
+            if (navigator.geolocation) {
+                retryFetchLocation();
+                // Update UI to show that tracking has started
+                document.querySelector("button:nth-child(1)").style.display = "none";
+                document.querySelector("button:nth-child(2)").style.display = "inline";
+                document.getElementById('status').textContent = "Tracking started...";
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Function to retry fetching location
+        function retryFetchLocation() {
+            watchID = navigator.geolocation.watchPosition(
+                sendLiveLocation,
+                (error) => {
+                    if (retryCount < maxRetries) {
+                        retryCount++;
+                        console.log(`Retrying location fetch... Attempt ${retryCount}`);
+                        retryFetchLocation();
+                    } else {
+                        showError(error);
+                    }
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 15000, // Increased timeout to 15 seconds
+                    maximumAge: 0,
+                }
+            );
+        }
+
+        // Function to stop location tracking
+        function stopTracking() {
+            if (watchID) {
+                navigator.geolocation.clearWatch(watchID);
+                document.querySelector("button:nth-child(1)").style.display = "inline";
+                document.querySelector("button:nth-child(2)").style.display = "none";
+                document.getElementById('status').textContent = "Tracking stopped.";
+                retryCount = 0; // Reset retry count
+            }
+        }
+
+        // Function to send the live location
+        function sendLiveLocation(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Update status
+            document.getElementById('status').textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+
+            // URL format for Google Maps link with live location
+            const googleMapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+            // WhatsApp URL format for sending location link
+            const whatsappLink = `https://wa.me/?text=My%20live%20location:%20${encodeURIComponent(googleMapsLink)}`;
+
+            // Open WhatsApp with prefilled location link
+            window.open(whatsappLink, "_blank");
+        }
+
+        // Function to handle errors
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert("An unknown error occurred.");
+                    break;
+            }
+            document.getElementById('status').textContent = "Error occurred while fetching location.";
+        }
+    </script>
+</body>
+
+</html>

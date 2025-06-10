@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Take a Stand</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to top right, #8a042c, #BD3F32);
+      color: white;
+    }
+
+    .top-bar__bg {
+      background-color: #8B0000;
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .top-bar__content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar__logo {
+      height: 60px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+
+    .nav__link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav__link:hover {
+      color: #FFD700;
+    }
+
+    .motive {
+      max-width: 1000px;
+      margin: 3em auto;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 2em;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+      color: white;
+    }
+
+    .motive__matter {
+      flex: 1 1 55%;
+    }
+
+    .motive__matter h2 {
+      color: #FFD2D2;
+      font-size: 1.8em;
+      margin-bottom: 0.5em;
+    }
+
+    .motive__matter p {
+      line-height: 1.6;
+    }
+
+    .motive img {
+      max-width: 100%;
+      border-radius: 10px;
+      flex: 1 1 40%;
+      object-fit: cover;
+      height: auto;
+    }
+
+    .text-para {
+      text-align: center;
+      margin-bottom: 3em;
+    }
+
+    .text-para em {
+      font-size: 1.5em;
+      color: #FFD2D2;
+      display: inline-block;
+      margin-top: 1em;
+    }
+
+    @media (max-width: 768px) {
+      .top-bar__content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .motive {
+        flex-direction: column;
+      }
+
+      .motive img {
+        order: -1;
+        margin-bottom: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Red Navbar -->
+  <div class="top-bar top-bar__bg">
+    <div class="top-bar__content">
+      <img class="top-bar__logo" src="main_logo.jpg" alt="Website Logo">
+      <h1 style="color: white; font-size: 2.2em;">Take a Stand</h1>
+      <nav class="nav">
+        <a class="nav__link" href="Home.html">Home</a>
+        <a class="nav__link" href="report.html">Report</a>
+        <a class="nav__link" href="psy.html">psychiatrist-details</a>
+
+        <a class="nav__link" href="fakecall.html">Fake call</a>
+        <a class="nav__link" href="chat.html">Chat</a>
+        <a class="nav__link" href="SDTrick.html">Self-Defense</a>
+        <a class="nav__link" href="Importance.html">Importance</a>
+        <a class="nav__link" href="quiz.html">Quizzee</a>
+        <a class="nav__link" href="About.html">About</a>
+        <a class="nav__link" href="StartPage.html">Log Out</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Motive Section -->
+  <div class="motive">
+    <div class="motive__matter">
+      <h2>Motive of this Website:</h2>
+      <p>
+        History says that women were ill-treated. The Sati Pratha in the ancient times to the girl child
+        abortion in the present scenario, women continue facing such violence. Heinous crimes against women
+        such as rape, acid attack, dowry system, honor killing, domestic violence, etc., are still happening.
+        <br><br>
+        As we all know, women’s empowerment is the most crucial point for the overall development of a country.
+        In India, women empowerment is needed more than ever. India is amongst the countries which are not safe
+        for women. There are various reasons for this. Firstly, women in India are in danger of honor killings.
+        Moreover, the education and freedom scenario is very regressive here.
+        <br><br>
+        Out of the total population, 50% of the population should consist of women. However, due to female
+        foeticide practices, girl child numbers are decreasing sharply.
+        So it is vital to ensure their safety. To better equip women regarding their well-being and security,
+        this website has been created.
+        <br><br>
+        The main motive of this website is to provide required help and information for women to empower and protect themselves.
+      </p>
+    </div>
+    <img src="self-defense.jpg" alt="Women Empowerment">
+  </div>
+
+  <!-- Thank You -->
+  <div class="text-para">
+    <em>Thank you for visiting this website..!</em>
+  </div>
+
+</body>
+</html>

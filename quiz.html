@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safety Quiz</title>
+  <style>
+    /* Red Navbar Theme */
+    .top-bar__bg {
+      background-color: #8B0000;
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .top-bar__content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .top-bar__logo {
+      height: 60px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1em;
+    }
+
+    .nav__link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav__link:hover {
+      color: #FFD700;
+    }
+
+    /* Quiz Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f4f4;
+      color: #333;
+    }
+
+    .quiz-container {
+      max-width: 800px;
+      margin: 2em auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 2em;
+    }
+
+    .quiz-container h1 {
+      text-align: center;
+      color: #B22222;
+      margin-bottom: 1.5em;
+    }
+
+    .question {
+      margin-bottom: 1.5em;
+    }
+
+    .question p {
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+
+    .options label {
+      display: block;
+      padding: 8px;
+      background-color: #f5eaea;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+
+    .options input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .submit-btn {
+      background-color: #B22222;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 1em auto;
+    }
+
+    .submit-btn:hover {
+      background-color: #a02020;
+    }
+
+    .result {
+      display: none;
+      margin-top: 2em;
+      font-size: 1.1em;
+      padding: 1em;
+      background-color: #fff0f0;
+      border-left: 5px solid #B22222;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .review {
+      margin-top: 1em;
+    }
+
+    @media (max-width: 600px) {
+      .quiz-container {
+        padding: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Red Navbar -->
+  <div class="top-bar top-bar__bg">
+    <div class="top-bar__content">
+      <img class="top-bar__logo" src="main_logo.jpg" alt="Website Logo" />
+      <h1 style="color: white; font-size: 2.2em">Take a Stand</h1>
+      <nav class="nav">
+        <a class="nav__link" href="Home.html">Home</a>
+        <a class="nav__link" href="report.html">Report</a>
+        <a class="nav__link" href="psy.html">psychiatrist-details</a>
+
+        <a class="nav__link" href="fakecall.html">Fake call</a>
+        <a class="nav__link" href="chat.html">Chat</a>
+        <a class="nav__link" href="SDTrick.html">Self-Defense</a>
+        <a class="nav__link" href="Importance.html">Importance</a>
+        <a class="nav__link" href="quiz.html">Quizzee</a>
+        <a class="nav__link" href="About.html">About</a>
+        <a class="nav__link" href="StartPage.html">Log Out</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Quiz Container -->
+  <div class="quiz-container">
+    <h1>Safety Quiz</h1>
+    <form id="quiz-form"></form>
+    <button class="submit-btn" onclick="submitQuiz()">Submit</button>
+
+    <div class="result" id="result">
+      <p>Your Score: <span id="score"></span></p>
+      <div class="review" id="review"></div>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "What should you do if you feel someone is following you?",
+        options: [
+          "Confront them directly",
+          "Walk to a crowded area or public place",
+          "Ignore and keep walking",
+          "Take a shortcut through an isolated path"
+        ],
+        correct: 1,
+        explanation: "Crowded areas help deter threats and allow quick access to help."
+      },
+      {
+        question: "What's the safest way to share your location with family?",
+        options: [
+          "Post on social media",
+          "Use a trusted tracking app",
+          "Tell a friend of a friend",
+          "Send random location screenshots"
+        ],
+        correct: 1,
+        explanation: "Tracking apps securely update your location in real time to trusted contacts."
+      },
+      {
+        question: "What should you do in a cab if you feel unsafe?",
+        options: [
+          "Stay silent",
+          "Argue with the driver",
+          "Call a friend and share location",
+          "Ignore and hope it passes"
+        ],
+        correct: 2,
+        explanation: "Sharing location or calling someone makes you feel safer and discourages threats."
+      },
+      {
+        question: "When is it safest to use headphones while walking?",
+        options: [
+          "At night in quiet streets",
+          "In busy marketplaces",
+          "Only during daylight in safe areas",
+          "Anytime you feel like it"
+        ],
+        correct: 2,
+        explanation: "Even during the day, awareness of your surroundings is important."
+      },
+      {
+        question: "Which of these is a safe online habit?",
+        options: [
+          "Clicking unknown links",
+          "Accepting all friend requests",
+          "Sharing passwords",
+          "Using strong, unique passwords"
+        ],
+        correct: 3,
+        explanation: "Strong and unique passwords reduce risk of hacking and identity theft."
+      },
+      {
+        question: "How should you respond to catcalling in public?",
+        options: [
+          "React violently",
+          "Yell and make a scene",
+          "Ignore and walk away or alert authorities",
+          "Start filming the person"
+        ],
+        correct: 2,
+        explanation: "Ignoring and reporting keeps you safe and helps authorities track issues."
+      },
+      {
+        question: "What’s a good way to learn basic self-defense?",
+        options: [
+          "Watch movies",
+          "Join a certified self-defense class",
+          "Read articles",
+          "Ignore it; it's not needed"
+        ],
+        correct: 1,
+        explanation: "Trained professionals provide hands-on, practical techniques for safety."
+      },
+      {
+        question: "How can you make your phone a safety tool?",
+        options: [
+          "Install SOS/emergency apps",
+          "Delete location services",
+          "Put it on silent all day",
+          "Keep it turned off"
+        ],
+        correct: 0,
+        explanation: "SOS apps quickly alert emergency contacts and services."
+      },
+      {
+        question: "What should you do before going on a solo trip?",
+        options: [
+          "Tell nobody",
+          "Keep your phone at home",
+          "Inform a close contact and share your itinerary",
+          "Turn off GPS"
+        ],
+        correct: 2,
+        explanation: "Sharing plans and contacts ensures someone can help if needed."
+      },
+      {
+        question: "What’s the best reaction if someone tries to grab your bag?",
+        options: [
+          "Hold on tightly and fight",
+          "Shout and let go to protect yourself",
+          "Follow them to recover it",
+          "Run after them alone"
+        ],
+        correct: 1,
+        explanation: "Prioritize your safety—shout to alert others and let go of the bag."
+      }
+    ];
+
+    function loadQuestions() {
+      const form = document.getElementById("quiz-form");
+      questions.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `
+          <p>${index + 1}. ${q.question}</p>
+          <div class="options">
+            ${q.options.map((option, i) =>
+              `<label><input type="radio" name="question${index}" value="${i}"> ${option}</label>`).join("")}
+          </div>
+        `;
+        form.appendChild(div);
+      });
+    }
+
+    function submitQuiz() {
+      const form = document.getElementById("quiz-form");
+      const result = document.getElementById("result");
+      const scoreDisplay = document.getElementById("score");
+      const review = document.getElementById("review");
+      let score = 0;
+      let reviewHTML = "";
+
+      questions.forEach((q, i) => {
+        const answer = form[`question${i}`].value;
+        if (parseInt(answer) === q.correct) {
+          score++;
+          reviewHTML += `<p class="correct">${i + 1}. Correct - ${q.explanation}</p>`;
+        } else {
+          reviewHTML += `<p class="incorrect">${i + 1}. Incorrect - ${q.explanation}</p>`;
+        }
+      });
+
+      scoreDisplay.textContent = `${score} / ${questions.length}`;
+      review.innerHTML = reviewHTML;
+      result.style.display = "block";
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    loadQuestions();
+  </script>
+</body>
+</html>

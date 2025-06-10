@@ -1,0 +1,168 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container Styles */
+.container {
+    max-width: 900px;
+    margin: 2em auto;
+    padding: 2em;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styles */
+h1, h2 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 1em;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 1.5em;
+}
+
+/* Chart Container Styles */
+.chart-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 1.5em auto;
+    position: relative;
+    background: #f9fbfc;
+    border-radius: 10px;
+    padding: 1em;
+    border: 1px solid #e2e8ed;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.chart-container canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Chart Center Text */
+.chart-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.chart-center h2 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #4a4a4a;
+}
+
+.chart-center p {
+    margin: 0;
+    font-size: 1em;
+    color: #888;
+}
+
+/* Form Styles */
+form {
+    margin: 2em 0;
+    padding: 1.5em;
+    background: #f9fbfc;
+    border-radius: 8px;
+    border: 1px solid #e2e8ed;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    padding: 0.8em;
+    margin: 0.5em 0;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1em;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #4caf50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Button Styles */
+form button {
+    background: #4caf50;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background: #45a045;
+    transform: scale(1.02);
+}
+
+form button:active {
+    transform: scale(0.98);
+}
+
+/* Issue List Styles */
+.issue-list {
+    margin-top: 2em;
+}
+
+.issue-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.issue-list li {
+    background: #f1f5f9;
+    margin: 0.5em 0;
+    padding: 1em;
+    border-left: 5px solid #4caf50;
+    border-radius: 6px;
+    font-size: 1em;
+    color: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 1em;
+    }
+
+    form input, form textarea, form button {
+        font-size: 0.9em;
+    }
+
+    .chart-center h2 {
+        font-size: 1.2em;
+    }
+
+    .chart-center p {
+        font-size: 0.9em;
+    }
+}

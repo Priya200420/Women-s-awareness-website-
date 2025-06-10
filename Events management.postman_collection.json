@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "project-women-safety",
+		"name": "Women Safety Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user123\",\n    \"email\": \"user@example.com\",\n    \"password\": \"password123\",\n    \"confirm_password\": \"password123\"\n}",
+					"options": { "raw": { "language": "json" } }
+				},
+				"url": "http://localhost:4000/auth/register"
+			}
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user123\",\n    \"password\": \"password123\"\n}",
+					"options": { "raw": { "language": "json" } }
+				},
+				"url": "http://localhost:4000/auth/login"
+			}
+		},
+		{
+			"name": "Add Crime Report",
+			"request": {
+				"method": "POST",
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Theft in Market\",\n    \"description\": \"A theft occurred at the local market.\",\n    \"location\": \"Market Street\",\n    \"date\": \"2025-01-10\",\n    \"evidence\": \"evidence.jpg\"\n}",
+					"options": { "raw": { "language": "json" } }
+				},
+				"url": "http://localhost:4000/reports/add"
+			}
+		},
+		{
+			"name": "Get All Crime Reports",
+			"request": {
+				"method": "GET",
+				"url": "http://localhost:4000/reports/all"
+			}
+		},
+		{
+			"name": "Update Crime Report",
+			"request": {
+				"method": "PUT",
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Updated Report Title\",\n    \"description\": \"Updated description of the incident.\",\n    \"location\": \"Updated location\"\n}",
+					"options": { "raw": { "language": "json" } }
+				},
+				"url": "http://localhost:4000/reports/update/{reportId}"
+			}
+		},
+		{
+			"name": "Delete Crime Report",
+			"request": {
+				"method": "DELETE",
+				"url": "http://localhost:4000/reports/delete/{reportId}"
+			}
+		},
+		{
+			"name": "Upload Evidence",
+			"request": {
+				"method": "POST",
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/path/to/evidence.jpg"
+						}
+					]
+				},
+				"url": "http://localhost:4000/reports/upload"
+			}
+		},
+		{
+			"name": "Add Safety Tip",
+			"request": {
+				"method": "POST",
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Stay Alert in Crowded Areas\",\n    \"description\": \"Always keep your belongings close in crowded spaces.\"\n}",
+					"options": { "raw": { "language": "json" } }
+				},
+				"url": "http://localhost:4000/tips/add"
+			}
+		},
+		{
+			"name": "Get All Safety Tips",
+			"request": {
+				"method": "GET",
+				"url": "http://localhost:4000/tips/all"
+			}
+		}
+	]
+}
